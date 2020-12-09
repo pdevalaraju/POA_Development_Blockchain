@@ -1,6 +1,6 @@
 # Proof of Authority Development Blockchain
 
-![Blockchain Technology](Images/istockphoto.jpg)
+![Blockchain Technology](images/istockphoto.jpg)
 
 The first step as a blockchain enthusiast is to set up a private testnet that you and your colleagues or team members 
 can use to explore potentials for blockchain.
@@ -30,7 +30,7 @@ Be sure to include any preliminary setup information, such as installing depende
 
 * Using commandline interface of Go Ethereum tool (geth) we will create two nodes with a separate `datadir` for each using `geth`., say node1 and node 2 in our custome test network. This step will create the address of the keys for these nodes and in each of the node directories a key store file gets created. We will use this keystore file to access our Wallet on MyCrypto.
 
-![Node Creation](Images/configuring_new_nodes.PNG)
+![Node Creation](images/configuring_new_nodes.PNG)
 
 
 ### Creating Genesis Block
@@ -41,7 +41,7 @@ Be sure to include any preliminary setup information, such as installing depende
 ** Run `puppeth`, name your network, and select the option to configure a new genesis block.
 ** The first thing it’ll ask for is the network name. This is useful for identifying various blockchains if you’re running several on your local machine. We’ll use “poatestnet” here. 
 
-![Puppeth](Images/puppeth.PNG)
+![Puppeth](images/puppeth.PNG)
 
 ** We will use Proof of Authority as the Concensus Algorithm which allows only specific address to mine /produce a block on the network. 
 ** Paste both account addresses (node addresses) from the first step one at a time into the list of accounts to seal.
@@ -51,9 +51,9 @@ Be sure to include any preliminary setup information, such as installing depende
 ** Export genesis configurations. This will fail to create two of the files, but you only need `poatestnet.json`.
 * You can delete the `poatestnet-harmony.json` file.
 
-![Genesis Block](Images/configuring_new_network.PNG)
+![Genesis Block](images/configuring_new_network.PNG)
 
-![Genesis Block](Images/configuring_new_network_2.PNG)
+![Genesis Block](images/configuring_new_network_2.PNG)
 
 ### Initializing and configuring the nodes to mine or produce new blocks
 
@@ -63,7 +63,7 @@ Be sure to include any preliminary setup information, such as installing depende
 * Be sure to unlock the account and enable mining on the second node!
 * You should now see both nodes producing new blocks
 
-![Initializing Nodes](Images/initializing_nodes.PNG)
+![Initializing Nodes](images/initializing_nodes.PNG)
 
 ## Send Test transactions.
 
@@ -73,27 +73,27 @@ we will connect our local blockchain and import the pre-funded wallets. Mycrypto
 * Use the MyCrypto GUI wallet to connect to the node with the exposed RPC port.
 * You will need to use a custom network, and include the chain ID, and use ETH as the currency.
 
-![custom-node](Images/custom_network.PNG)
+![custom-node](images/custom_network.PNG)
 
 * Once the custom node is created on MyCrypto, select the keystore file option on the home page of crypto tool. Import the keystore file from the `node1/keystore` directory into MyCrypto. This will import the private key.
 
-![custom-node](Images/keystore.PNG)
+![custom-node](images/keystore.PNG)
 
 * the account balance will show a large number of tokens which are prefunded into the acccount when creating the Genesis block and configuring the nodes.
 * select the Send Ether & Tokens option on the top menu which will open up the transaction initiation page as shown below
 * Celebrate, you just created a blockchain and sent a transaction!
 
-![Initiate Transaction](Images/initiate_tx.PNG)
+![Initiate Transaction](images/initiate_tx.PNG)
 
 *Enter the number of tokens you want to send to the second node we created in our network and the node address and then submit the transaction
 * Send a transaction from the `node1` account to the `node2` account.
 
-![send Transaction](Images/tx_from_node1_to_node2.PNG)
+![send Transaction](images/tx_from_node1_to_node2.PNG)
 
 * As both Node11 and node2 in our POATestnet are configured to mine the blocks, The transaction will be confirmed and a transaction hash will be shared once it is mined. 
 * Copy the transaction hash and paste it into the "TX Status" section of the app, or click "TX Status" in the popup.
 
-![Confirm Transaction](Images/tx_success.PNG)
+![Confirm Transaction](images/tx_success.PNG)
 
 ### Remember, *never* share your mainnet private keys! This is a testnet, so coins have no value here!
 
