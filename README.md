@@ -16,9 +16,6 @@ In order to set up a testnet, We will need to use the following tools and utilit
 * MyCrypto Tool, an open-source, client-side tool for generating ether wallets and send/receive test Coins/tokens.
 
 
-Be sure to include any preliminary setup information, such as installing dependencies and environment configuration.
-* Write instructions on how to use the chain for the rest of your team.
-
 ## Pre Requisite Installations
 
 * MyCrypto is a free, open-source, client-side interface that allows you to interact directly with the blockchain.
@@ -41,7 +38,7 @@ Be sure to include any preliminary setup information, such as installing depende
 
 * Using commandline interface of Go Ethereum tool (geth) we will create two nodes with a separate `datadir` for each using `geth`., say node1 and node 2 in our custome test network. This step will create the address of the keys for these nodes and in each of the node directories a key store file gets created. We will use this keystore file to access our Wallet on MyCrypto.
 
-#### Code: Run the below commands on powershell once after the other. Exlcude the quotation marks
+#### Code: Run the below commands on powershell one after the other. Exlcude the quotation marks. Make note of the addresses in a notepad. We will use them to pre-fund the accounts.
 
 * "./geth account new --datadir poa_testnet/node1"
 * "./geth account new --datadir poa_testnet/node2"
@@ -76,18 +73,18 @@ Be sure to include any preliminary setup information, such as installing depende
 
 * Initialize each node with the new `networkname.json` with `geth`.
 
-** Code: Run the below commands on powershell once after the other. Exlcude the quotation marks
-** "./geth init poatestnet.json --datadir poa_testnet/node1"
-** "./geth init poatestnet.json --datadir poa_testnet/node2"
+* Code: Run the below commands on powershell once after the other. Exlcude the quotation marks
+* "./geth init poatestnet.json --datadir poa_testnet/node1"
+* "./geth init poatestnet.json --datadir poa_testnet/node2"
  
 * Run the first node, unlock the account, enable mining, and the RPC flag. Only one node needs RPC enabled.
-** Code: Setup the first node to mine: Use a seperate powershell window to run this command. Exlcude the quotation marks
-** "./geth --datadir poa_testnet/node1 --unlock "10F997cB675a399845f7DB043F1ACF7737D0b52c" --rpc --allow-insecure-unlock --mine --minerthreads 1"
-** once the Node gets initialized and registers network, copy the enode from the powershell window. We will need the enode to boot the 2nd Node using the below commmand
+* Code: Setup the first node to mine: Use a seperate powershell window to run this command. Exlcude the quotation marks. use the node1 adddress wihtout 0x
+* "./geth --datadir poa_testnet/node1 --unlock "10F997cB675a399845f7DB043F1ACF7737D0b52c" --rpc --allow-insecure-unlock --mine --minerthreads 1"
+* once the Node gets initialized and registers network, copy the enode from the powershell window. We will need the enode to boot the 2nd Node using the below commmand
 
 * Set a different peer port for the second node and use the first node's `enode` address as the `bootnode` flag, 'unlock' flag and 'mine' flag. 
-** Code: Setup the first node to mine: Use a seperate powershell window to run this command. Exlcude the quotation marks
-** "./geth --datadir poa_testnet/node2 --unlock "A3CfE3131c8bF7AcA05118dF80C4CCB08e7f8029" --allow-insecure-unlock --port 30304 --bootnodes enode://86c9c9435ebc3d97850625bf6348525ad6559c37c62b6a6a709594dee9e818a8493f5152f56318afa3a37ef481386db6d90123d3f315a0cfedcb92949fc72305@127.0.0.1:30303 --ipcdisable --mine --minerthreads 1"
+* Code: Setup the first node to mine: Use a seperate powershell window to run this command. Exlcude the quotation marks. use the node2 adddress wihtout 0x
+* "./geth --datadir poa_testnet/node2 --unlock "A3CfE3131c8bF7AcA05118dF80C4CCB08e7f8029" --allow-insecure-unlock --port 30304 --bootnodes enode://86c9c9435ebc3d97850625bf6348525ad6559c37c62b6a6a709594dee9e818a8493f5152f56318afa3a37ef481386db6d90123d3f315a0cfedcb92949fc72305@127.0.0.1:30303 --ipcdisable --mine --minerthreads 1"
 * You should now see both nodes producing new blocks
 
 ![Initializing Nodes](images/initializing_nodes.PNG)
