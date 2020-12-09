@@ -22,16 +22,16 @@ Be sure to include any preliminary setup information, such as installing depende
 ## Pre Requisite Installations
 
 * MyCrypto is a free, open-source, client-side interface that allows you to interact directly with the blockchain.
-** download the verson speccfic to your Operating System from https://download.mycrypto.com/ and follow the wizard steps which is self explanatory
-![Pre Requisite](images/mycrypto.PNG)
+* download the verson speccfic to your Operating System from https://download.mycrypto.com/ and follow the wizard steps which is self explanatory
+![MyCrypto](images/mycrypto.PNG)
 
-*  Go Ethereum Tools to create our very own blockchain, from the genesis block to mining tokens and making transactions.
-** Navigate to the Go Ethereum Tools download page at https://geth.ethereum.org/downloads/
-** Scroll down to the "Stable Releases" section and proceed depending on your operating system.
-** Click on the "Geth & Tools 1.9.7" to download the applications bundle archive.
-** After downloading the tools archive, open your "Downloads" folder, locate the file called geth-alltools-windows-amd64-1.9.7-a718daa6.zip
-** Decompress the archive in the location of your preference in your computer's hard drive, and rename the containing folder as Blockchain-Tools. 
-** This will bring the commandline tools puppeth and geth which are part of the Go Ethereum package.
+* Go Ethereum Tools to create our very own blockchain, from the genesis block to mining tokens and making transactions.
+* Navigate to the Go Ethereum Tools download page at https://geth.ethereum.org/downloads/
+* Scroll down to the "Stable Releases" section and proceed depending on your operating system.
+* Click on the "Geth & Tools 1.9.7" to download the applications bundle archive.
+* After downloading the tools archive, open your "Downloads" folder, locate the file called geth-alltools-windows-amd64-1.9.7-a718daa6.zip
+* Decompress the archive in the location of your preference in your computer's hard drive, and rename the containing folder as Blockchain-Tools. 
+* This will bring the commandline tools puppeth and geth which are part of the Go Ethereum package.
 
 ![Pre Requisite](images/installations.PNG)
 
@@ -92,16 +92,18 @@ Be sure to include any preliminary setup information, such as installing depende
 
 ![Initializing Nodes](images/initializing_nodes.PNG)
 
-#### Geth flags:
-* datadir: specifies the Directory where the child nodes configuration and keystore files to be stored or located
-* unlock: unlocks the account to access the configuration and keystore for the network 
-* port: port# on which each node has to run. if configuring on multiple machines the port# is not mandatory
-* bootnodes: Reference node which is used to run the 2nd node. Uses enode as the address of the primary node. 
-* rpc: Repmote procedure communication - triggers the inter node communication
-* ipcdisable: enables communication over RPC instead of IPC. if thhe nodes are in two seperate machines, the comminations is via IP address. since we have our nodes created in the same machine but using ports, we disable IP communication and enable it via RPC which communicates via the port # numbers.
-* mine: Enable the node to mine or produce the block
-* minerthreads: # of threads each node can spawn to mine the blocks
-* allow-insecure-unlock: use http instead of https or SSH authentication. as our nodes are local within the same machine or within the subnet which is not directly exposed to the internet.
+#### Geth flags used in our code:
+* --datadir: specifies the Directory where the child nodes configuration and keystore files to be stored or located. 
+* --unlock: unlocks the account to access the configuration and keystore for the network. accepts Comma separated list of accounts to unlock
+* --port:  Network listening port (default: 30303) 
+* --bootnodes: Reference node which is used to run the 2nd node. Uses enode as the address of the primary node. Comma separated enode URLs for P2P discovery bootstrap
+* --rpc: Enables the HTTP-RPC server. Repmote procedure call is an inter process communication method triggers the processes/subroutines to execute in another address space.
+* --ipcdisable: disables IPC-RPC server. Inter Process Communication method enables communications between multiplease thread of the same processenables communication over RPC instead of IPC. As we will be runnng the network on the same machine with only single minerthread, we disable IPC but use RPC.
+* --mine: Enable the node to mine or produce the block
+* --minerthreads: # of CPU threads each node can spawn to mine the blocks
+* --allow-insecure-unlock: If you access a node with geth via HTTP protocol you can´t unlock account with personal.unlockAccount(web3.eth.account, password). If you try, you'll receive error "account unlock with HTTP access is forbidden". So, to avoid that you have to use the flag allow-insecure-unlock..
+
+* for complete list of Geth Commmands and options, please refer to https://geth.ethereum.org/docs/interface/command-line-options
 
 
 ## Send Test transactions.
